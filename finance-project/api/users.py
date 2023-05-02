@@ -42,9 +42,6 @@ def delete_user(user_id: str, repo=Depends(get_user_repo)):
         return {"message": "User not found"}
 
 
-# TODO fix api, return asset info
-
-
 @users_router.post("/{user_id}/assets", response_model=AssetInfoUser)
 def add_asset_to_user(user_id: str, asset: AssetAdd, repo=Depends(get_user_repo)):
     try:
