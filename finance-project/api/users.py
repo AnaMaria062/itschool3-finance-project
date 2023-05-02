@@ -62,4 +62,5 @@ def add_asset_to_user(user_id: str, asset: AssetAdd, repo=Depends(get_user_repo)
         )
 
     AssetRepo().add_to_user(user, new_asset)
-    return new_asset
+    asset_info = AssetInfoUser(user_id=user_id, asset=new_asset)
+    return asset_info
