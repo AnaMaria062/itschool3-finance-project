@@ -30,14 +30,14 @@ class UserPersistenceSqlite(UserPersistenceInterface):
                 cursor.execute(f"INSERT INTO users (id, username) VALUES ('{user.id}', '{user.username}')")
             conn.commit()
 
-    # def delete(self, user_id: str):
-    #     with sqlite3.connect("main_users.db") as conn:
-    #         cursor = conn.cursor()
-    #         cursor.execute(f"DELETE FROM users WHERE id='{user_id}'")
-    #         conn.commit()
+    def delete(self, user_id: str):
+        with sqlite3.connect("main_users.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"DELETE FROM users WHERE id='{user_id}'")
+            conn.commit()
 
-    # def edit(self, user_id: str, new_username: str):
-    #     with sqlite3.connect("main_users.db") as conn:
-    #         cursor = conn.cursor()
-    #         cursor.execute(f"UPDATE users SET username='{new_username}' WHERE id='{user_id}'")
-    #         conn.commit()
+    def edit(self, user_id: str, new_username: str):
+        with sqlite3.connect("main_users.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"UPDATE users SET username='{new_username}' WHERE id='{user_id}'")
+            conn.commit()
