@@ -7,7 +7,7 @@ from domain.user.user import User
 
 
 class UserPersistenceFile(UserPersistenceInterface):
-    def __int__(self, file_path: str):
+    def __init__(self, file_path: str):
         self.__file_path = file_path
         self.logger = logging.getLogger(__name__)
 
