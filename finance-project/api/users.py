@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
+from starlette import status
 
 from domain.asset.factory import AssetFactory
 from domain.asset.repo import AssetRepo
