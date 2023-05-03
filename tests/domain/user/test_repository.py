@@ -4,7 +4,6 @@ from domain.user.factory import UserFactory, InvalidUsername
 from domain.user.repo import UserRepo
 
 
-# TODO update tests
 class UserRepositoryTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
