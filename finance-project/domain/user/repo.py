@@ -41,6 +41,8 @@ class UserRepo:
                     stocks=assets
                 )
 
+        raise ValueError(f"No user found with id: {user_id}")
+
     def delete(self, user_id: str):
         user_to_delete = self.get_by_id(user_id)
         if user_to_delete:
@@ -53,3 +55,15 @@ class UserRepo:
             return True
         else:
             return False
+
+    def get_user_with_info(self, user_id: str) -> User:
+        user = self.get_by_id(user_id)
+        if user:
+            assets = AssetRepo().get_for_user(user)
+            return User(
+                uuid=user.id,
+                username=user.username,
+                stocks=assets
+            )
+        else:
+            return User(uuid=uuid.UUID(int=0), username="", stocks=[])
