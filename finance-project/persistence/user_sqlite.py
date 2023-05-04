@@ -1,4 +1,6 @@
 import sqlite3
+from uuid import UUID
+
 from domain.user.persistance_interface import UserPersistenceInterface
 from domain.user.user import User
 from domain.user.factory import UserFactory
@@ -30,13 +32,13 @@ class UserPersistenceSqlite(UserPersistenceInterface):
                 cursor.execute(f"INSERT INTO users (id, username) VALUES ('{user.id}', '{user.username}')")
             conn.commit()
 
-    def delete(self, user_id: str):
+    def delete(self, user_id: UUID):
         with sqlite3.connect("main_users.db") as conn:
             cursor = conn.cursor()
             cursor.execute(f"DELETE FROM users WHERE id='{user_id}'")
             conn.commit()
 
-    def edit(self, user_id: str, new_username: str):
+    def edit(self, user_id: UUID, new_username: str):
         with sqlite3.connect("main_users.db") as conn:
             cursor = conn.cursor()
             cursor.execute(f"UPDATE users SET username='{new_username}' WHERE id='{user_id}'")

@@ -1,4 +1,5 @@
 import abc
+from uuid import UUID
 
 from domain.user.user import User
 
@@ -13,9 +14,9 @@ class UserPersistenceInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def delete(self, user_id: str):
+    def delete(self, user_id: UUID):
         pass
 
     @abc.abstractmethod
-    def edit(self, user_id: str, new_username: str):
+    def edit(self, user_id: UUID, new_username: str):
         pass
