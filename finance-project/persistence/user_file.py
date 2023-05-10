@@ -27,3 +27,20 @@ class UserPersistenceFile(UserPersistenceInterface):
         users_info = [(str(x.id), x.username, x.stocks) for x in current_users]
         with open(self.__file_path, "w") as f:
             json.dump(users_info, f)
+
+    def delete(self, user_id: str):
+        current_users = self.get_all()
+        new_users = [user for user in current_users if user.id != user_id]
+        users_info = [(str(x.id), x.username, x.stocks) for x in new_users]
+        with open(self.__file_path, "w") as f:
+            json.dump(users_info, f)
+
+    def edit(self, user_id: str, updated_user: User):
+        current_users = self.get_all()
+        for i, user in enumerate(current_users):
+            if user.id == user_id:
+                current_users[i] = updated_user
+                break
+        users_info = [(str(x.id), x.username, x.stocks) for x in current_users]
+        with open(self.__file_path, "w") as f:
+            json.dump(users_info, f)
