@@ -22,7 +22,7 @@ class UserMyTestCase(unittest.TestCase):
 
     def test_it_sets_the_stocks_we_give(self):
         username = "random-username"
-        stocks = ["AMZN", "MSFT", "NVDA"]
+        stocks = ['AMZN', 'MSFT', 'NVDA']
         user = User(username, stocks)
 
         actual_stocks = user.stocks
